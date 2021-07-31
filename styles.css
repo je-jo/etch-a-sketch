@@ -24,17 +24,17 @@ html, body {
 }
 
 #container {
-    background-color: aquamarine;
     width: 300px;
     height: 300px;
     display: grid;
 
 }
 
-/* .cell {
-    height: 20px;
-    background-color: rosybrown;
-} */
+.cell {
+    background-color: white;
+    border: 1px solid lightgray;
+
+} 
 
 
 @media screen and (min-width: 425px) {
