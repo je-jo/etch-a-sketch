@@ -5,9 +5,9 @@
     --yellow: #ec9c0e;
 }
 
-/* * {
+* {
     outline: 1px solid red;
-} */
+}
 
 html, body {
     width: 100%;
@@ -27,6 +27,8 @@ html, body {
     width: 300px;
     height: 300px;
     display: grid;
+    border: 3px solid dimgray;
+    border-radius: 3px;
 
 }
 
@@ -35,6 +37,55 @@ html, body {
     border: 1px solid lightgray;
 
 } 
+
+.pallete-wrapper {
+    background-color: palegoldenrod;
+    height: 75px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pallete {
+    height: 50px;
+    width: 100%;
+    border-radius: 50%;
+}
+
+#orangered {
+    background-color: orangered;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#yellowgreen {
+    background-color: yellowgreen;
+}
+
+#steelblue {
+    background-color: steelblue;
+}
+
+#purple {
+    background-color: purple;
+}
+
+#hotpink {
+    background-color: hotpink;
+}
+
+#size {
+    background-color: cadetblue;
+    height: 50px;
+    width: 100%;
+}
 
 
 @media screen and (min-width: 425px) {

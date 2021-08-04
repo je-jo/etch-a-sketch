@@ -11,8 +11,28 @@
     <div class="page-wrapper">
     <h1>ETCH-A-SKETCH</h1>
     <div id="container"></div>
+    <div class="pallete-wrapper">
+        <div class="pallete" id="orangered"></div>
+        <div class="pallete" id="orange"></div>
+        <div class="pallete" id="yellow"></div>
+        <div class="pallete" id="yellowgreen"></div>
+        <div class="pallete" id="steelblue"></div>
+        <div class="pallete" id="purple"></div>
+        <div class="pallete" id="hotpink"></div>
+    </div>
+    <div class="settings">
+        <div id="size">
+            <label for="gridsize">Enter new grid size:</label>
+            <input type="number" id="gridsize" name="gridsize" min="2" max="100" value="16" placeholder="16">
+            <button id="creategrid">Create!</button>
+        </div>
+    </div>
+    
     <button id="clear">CLEAR</button>
 </div>
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
