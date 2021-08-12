@@ -1,9 +1,11 @@
 const container = document.getElementById("container");
 let size = 16;
-const square = size ** 2;
 const cells = document.getElementsByClassName("cell"); //live collection
+let paintMethod = "click";
+let opacity = 1;
+let currentOpacity;
 
-createGrid(size);
+
 
 function createGrid(size) {
     clearAll();
@@ -16,18 +18,26 @@ function createGrid(size) {
     addListener();
 }
 
-
-
 function addListener() {
     for (let i = 0; i < cells.length; i++) {
-        cells[i].addEventListener('mouseenter', colorCell);
+        cells[i].addEventListener(`${paintMethod}`, colorCell);
     }
 }
 
-function colorCell(e) {
-    e.target.style.backgroundColor = `${color}`;
+function colorCell() {
+    this.style.backgroundColor = `${color}`;
+    this.style.opacity = `${opacity}`;
 }
 
+function clearAll() {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+
+
+// clear canvas
 const clear = document.getElementById("clear");
 clear.addEventListener("click", eraser);
 
@@ -37,29 +47,46 @@ function eraser() {
     }
 }
 
-function clearAll() {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
+
+
+
+// color buttons
+const colorButtons = document.getElementsByClassName("pallete");
+let color = "steelblue" //default
+for (let i = 0; i < colorButtons.length; i++) {
+    colorButtons[i].addEventListener('click', function (e) {
+        colorButtons[i].classList.remove("active"); //doesnt work
+        color = e.currentTarget.id;
+        e.currentTarget.classList.add("active");
+    });
 }
 
-const colorButtons = document.getElementsByClassName("pallete");
 
-let color = "pink"
+// hover or click
+const methods = document.getElementsByName("method");
+for (let i = 0; i < methods.length; i++) {
+    methods[i].addEventListener("click", function (e) {
+        paintMethod = e.currentTarget.id;
+        console.log(paintMethod);
+    });
+};
 
-//function setColor() {
-    for (let i = 0; i < colorButtons.length; i++) {
-        colorButtons[i].addEventListener('click', function (e) {
-            color = e.currentTarget.id;
-        e.currentTarget.classList.add("active");
-        });
-    } 
-// }
+// transparency
+const transparency = document.getElementsByName("opacity");
+for (let i = 0; i < transparency.length; i++) {
+    transparency[i].addEventListener("click", function (e) {
+        opacity = +e.currentTarget.id;
+    });
+};
 
+
+
+
+// create new grid
 const inputSize = document.getElementById("gridsize");
 inputSize.addEventListener("change", updateValue);
 function updateValue(e) {
-  size = e.target.value;
+    size = e.target.value;
 }
 
 const createButton = document.getElementById("creategrid");
@@ -67,6 +94,6 @@ createButton.addEventListener("click", function (e) {
     createGrid(size);
 });
 
-
+createGrid(size);
 
 
