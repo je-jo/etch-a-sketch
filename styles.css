@@ -1,7 +1,7 @@
 @import url(minireset.css);
 
 :root {
-    --red: #dc2e4e;
+    --red: #B00020;
     --yellow: #ec9c0e;
 }
 
@@ -12,7 +12,15 @@
 html, body {
     width: 100%;
     height: 100%;
-    background-color: lightskyblue
+
+    
+    background: #00B8D4;
+    background: linear-gradient(to top, #00B8D4, #00E5FF);
+}
+
+body, input, button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
 }
 
 .page-wrapper {
@@ -24,13 +32,16 @@ html, body {
     padding: 50px;
 }
 
-.main {
-    box-sizing: content-box;
+.frame {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 25px;
+}
+
+.outer-wrapper {
     width: 250px;
     display: flex;
     flex-direction: column;
-    border: 30px solid var(--red);
-    border-radius: 25px;
 }
 
 #container {
@@ -98,7 +109,7 @@ html, body {
 }
 
 .active {
-    border: 3px solid aqua;
+    border: 3px solid yellow;
 }
 
 .settings {
@@ -123,7 +134,7 @@ html, body {
 @media screen and (min-width: 425px) {
 
 
-    .main {
+    .outer-wrapper {
         width: 350px;
     }
 
@@ -135,8 +146,13 @@ html, body {
 
 @media screen and (min-width: 768px) {
 
-    .main {
+    body, input, button {
+        font-size: 14px;
+    }
+
+    .outer-wrapper {
         width: 850px;
+        height: 650px;
         flex-direction: row;
     }
 
@@ -172,8 +188,9 @@ html, body {
 
 @media screen and (min-width: 1200px) {
 
-    .main {
+    .outer-wrapper {
         width: 950px;
+        height: 750px;
     }
     
     #container {
