@@ -25,32 +25,49 @@
                     <div class="pallete" id="steelblue"></div>
                     <div class="pallete" id="purple"></div>
                     <div class="pallete" id="hotpink"></div>
+                    <div class="pallete" id="sienna"></div>
                     <div class="pallete" id="white"></div>
                     <div class="pallete" id="black"></div>
                 </div>
 
-                <div class="settings">
-                    <div id="size">
-                        <label for="gridsize">Enter new grid size:</label>
-                        <input type="number" id="gridsize" name="gridsize" min="2" max="100" value="16"
-                            placeholder="16">
-                        <button id="creategrid">Create!</button>
+                <form class="settings">
+                    <div class="form-row">
+                        <section id="size">
+                            <label for="gridsize">Enter new grid size:</label>
+                            <input type="number" id="gridsize" name="gridsize" min="2" max="100" value="16"
+                                placeholder="16">
+                            <button id="creategrid">CREATE!</button>
+                        </section>
                     </div>
-                    <form id="paint-method">
-                        <label for="mouseenter"><input type="radio" name="method" id="mouseenter" value="mouseenter"
-                                checked>Hover</label>
-                        <label for="click"><input type="radio" name="method" id="click" value="click">Click</label>
-                        <label for="touchstart"><input type="radio" name="method" id="touchstart" value="touchstart">Touch</label>
-                    </form>
-                    <form id="opacity">
-                        <label for="solid"><input type="radio" name="opacity" id="1" value="1" checked>Solid</label>
-                        <label for="transparent"><input type="radio" name="opacity" id="0.1"
-                                value="0.1">Transparent</label>
-                    </form>
-                </div>
+                    <div class="form-row">
+                        <section id="paint-method">
+                            <fieldset>
+                                <legend>Paint Method</legend>
+                                <label for="mouseenter"><input type="radio" name="method" id="mouseenter"
+                                        value="mouseenter" checked>Hover</label>
+                                <label for="click"><input type="radio" name="method" id="click"
+                                        value="click">Click</label>
+                                <label for="touchstart"><input type="radio" name="method" id="touchmove"
+                                        value="touchmove">Touch</label>
+                            </fieldset>
+                        </section>
+                        <section id="opacity">
+                            <fieldset>
+                                <legend>Transparency</legend>
+                                <label for="solid"><input type="radio" name="opacity" id="1" value="1"
+                                        checked>Solid</label>
+                                <label for="transparent"><input type="radio" name="opacity" id="0.1"
+                                        value="0.1">Transparent</label>
+                            </fieldset>
+                        </section>
+                        <section id="linetoggle">
+                            <button id="toggle">Toggle grid lines</button>
+                        </section>
+                    </div>
+                </form>
             </div>
         </div>
-        <button id="clear">CLEAR</button>
+        <button id="clear">CLEAR!</button>
     </div>
     <script src="script.js"></script>
 </body>

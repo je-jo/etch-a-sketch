@@ -3,6 +3,8 @@
 :root {
     --red: #B00020;
     --yellow: #ec9c0e;
+    --blue: #227093;
+    --accent: #E9902D;
 }
 
 /* * {
@@ -12,10 +14,10 @@
 html, body {
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
 
-    
-    background: #00B8D4;
-    background: linear-gradient(to top, #00B8D4, #00E5FF);
+    background: var(--blue);
+    background: linear-gradient(to top, var(--blue), #7ec2e1);
 }
 
 body, input, button {
@@ -34,8 +36,9 @@ body, input, button {
 
 .frame {
     background-color: whitesmoke;
-    padding: 50px;
-    border-radius: 25px;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
 }
 
 .outer-wrapper {
@@ -54,10 +57,9 @@ body, input, button {
 
 }
 
-.cell {
-    border: 1px solid lightgray;
-
-} 
+.bordered {
+    outline: 1px solid lightgray;
+}
 
 .pallete-wrapper {
     height: 75px;
@@ -100,6 +102,10 @@ body, input, button {
     background-color: hotpink;
 }
 
+#sienna {
+    background-color: sienna;
+}
+
 #white {
     background-color: white;
 }
@@ -115,17 +121,52 @@ body, input, button {
 .settings {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     background-color: whitesmoke;
 }
 
-#size {
+.form-row, #size {
     height: 50px;
-    width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="number"] {
+    width: 60%;
+    margin: 15px;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
 
 #clear {
     margin: 50px auto;
+    width: 150px;
+    border-radius: 3px;
+    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
+}
+
+button {
+    font-size: 1.1em;
+    width: 75px;
+    padding: 10px;
+    background-color: #fff;
+    color: var(--blue);
+    border: none;
+    border-radius: 3px;
+}
+
+button:hover {
+    background-color: var(--accent);
+    color: #fff;
+    font-weight: bolder;
 }
 
 
@@ -151,21 +192,21 @@ body, input, button {
     }
 
     .outer-wrapper {
-        width: 850px;
-        height: 650px;
+        width: 700px;
+        height: 550px;
         flex-direction: row;
     }
 
     #container {
-        height: 650px;
-        width: 650px;
+        height: 550px;
+        width: 550px;
     }
 
     .pallete-wrapper {
         flex-direction: column;
         order: -1;
         height: 100%;
-        width: 100px;
+        width: 75px;
     }
 
     .pallete {
@@ -174,14 +215,20 @@ body, input, button {
 
     .settings {
         flex-direction: column;
+        flex-wrap: nowrap;
         height: 100%;
-        width: 100px;
+        width: 75px;
     }
 
-    #size, #paint-method, #opacity {
+    .form-row {
+        flex-direction: column;
         height: 100%;
-        width: 100px;
+        width: 75px;
     }
+
+   #size {
+       flex-direction: column;
+   }
 
 }
 
@@ -189,10 +236,10 @@ body, input, button {
 @media screen and (min-width: 1200px) {
 
     .outer-wrapper {
-        width: 950px;
+        width: 900px;
         height: 750px;
     }
-    
+
     #container {
         height: 750px;
         width: 750px;

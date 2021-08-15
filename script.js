@@ -6,16 +6,23 @@ let opacity = 1;
 
 
 
+
 function createGrid(size) {
     clearAll();
     for (let i = 1; i <= size ** 2; i++) {
         const cell = document.createElement("div");
-        cell.classList.add("cell");
+        cell.classList.add("cell", "bordered");
         container.appendChild(cell);
         container.setAttribute("style", `grid-template-columns: repeat(${size}, 1fr);`);
+        toggleButton.addEventListener("click", function () {
+            cell.classList.toggle("bordered");
+        });
     }
     addListener();
 }
+
+const toggleButton = document.getElementById("toggle");
+
 
 function addListener() {
     for (let i = 0; i < cells.length; i++) {
@@ -42,7 +49,7 @@ function colorCell(e) {
     e.currentTarget.style.backgroundColor = `${color}`;
 
     if (opacity <= 0.9 && e.currentTarget.style.opacity <= 0.9) { //without the first condition, opacity of 1 becomes 0.1
-        opacity = e.currentTarget.style.opacity; // without e.currentTarget line, the counter never resets for single cell
+        opacity = e.currentTarget.style.opacity; // without this line, the counter never resets for individual cells
         e.currentTarget.style.opacity = (+`${opacity}` + 0.1);
     }
     else {
@@ -66,7 +73,7 @@ clear.addEventListener("click", eraser);
 
 function eraser() {
     for (let i = 0; i < cells.length; i++) {
-        cells[i].style.backgroundColor = "white"
+        cells[i].removeAttribute("style"); // removes color and opacity settings from previous paint job
     }
 }
 
@@ -109,9 +116,13 @@ function updateValue(e) {
 }
 
 const createButton = document.getElementById("creategrid");
-createButton.addEventListener("click", function (e) {
+createButton.addEventListener("click", function () {
     createGrid(size);
 });
+
+
+
+
 
 createGrid(size);
 
