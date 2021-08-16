@@ -1,9 +1,11 @@
 const container = document.getElementById("container");
-let size = 16;
+let size = 10;
 const cells = document.getElementsByClassName("cell"); //live collection
 let paintMethod = "mouseenter";
 let opacity = 1;
 
+const toggleButton = document.getElementById("toggle");
+ 
 
 
 
@@ -14,14 +16,14 @@ function createGrid(size) {
         cell.classList.add("cell", "bordered");
         container.appendChild(cell);
         container.setAttribute("style", `grid-template-columns: repeat(${size}, 1fr);`);
-        toggleButton.addEventListener("click", function () {
+        toggleButton.addEventListener("click", function (e) {
             cell.classList.toggle("bordered");
-        });
+         });
     }
     addListener();
+    console.log("new grid created")
 }
 
-const toggleButton = document.getElementById("toggle");
 
 
 function addListener() {
@@ -71,7 +73,7 @@ function clearAll() {
 const clear = document.getElementById("clear");
 clear.addEventListener("click", eraser);
 
-function eraser() {
+function eraser(_e) {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeAttribute("style"); // removes color and opacity settings from previous paint job
     }
@@ -82,7 +84,7 @@ function eraser() {
 
 // color buttons
 const colorButtons = document.getElementsByClassName("pallete");
-let color = "steelblue" //default
+let color = "orange" //default
 for (let i = 0; i < colorButtons.length; i++) {
     colorButtons[i].addEventListener('click', function (e) {
         colorButtons[i].classList.remove("active"); //doesnt work
@@ -111,19 +113,27 @@ for (let i = 0; i < methods.length; i++) {
 // create new grid
 const inputSize = document.getElementById("gridsize");
 inputSize.addEventListener("change", updateValue);
+
 function updateValue(e) {
     size = e.target.value;
+    console.log(size)
 }
 
 const createButton = document.getElementById("creategrid");
-createButton.addEventListener("click", function () {
-    createGrid(size);
+createButton.addEventListener("click", function (e) {
+    let confirmCreate = confirm(`You are about to clear all your work and create a new ${size}x${size} grid. Are you sure?`);
+    if (confirmCreate == true) {
+        createGrid(size);
+    }
+    else {
+        return
+    }
 });
 
 
 
 
 
-createGrid(size);
+createGrid(10);
 
 

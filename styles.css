@@ -134,10 +134,12 @@ body, input, button {
     align-items: center;
 }
 
-input[type="number"] {
+input[type="range"] {
     width: 60%;
     margin: 15px;
 }
+
+
 
 fieldset {
     border: none;
@@ -146,19 +148,14 @@ fieldset {
     padding: 0;
 }
 
-#clear {
-    margin: 50px auto;
-    width: 150px;
-    border-radius: 3px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
-}
+
 
 button {
     font-size: 1.1em;
     width: 75px;
     padding: 10px;
-    background-color: #fff;
-    color: var(--blue);
+    background-color: var(--blue);
+    color: #fff;
     border: none;
     border-radius: 3px;
 }
@@ -167,6 +164,15 @@ button:hover {
     background-color: var(--accent);
     color: #fff;
     font-weight: bolder;
+}
+
+button#clear {
+    margin: 50px auto;
+    width: 150px;
+    background-color: #fff;
+    color: var(--blue);
+    border-radius: 3px;
+    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
 }
 
 
@@ -219,6 +225,11 @@ button:hover {
         height: 100%;
         width: 75px;
     }
+
+    input[type="range"] {
+        writing-mode: bt-lr;
+        -webkit-appearance: slider-vertical;
+      }
 
     .form-row {
         flex-direction: column;
