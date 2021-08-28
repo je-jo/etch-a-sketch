@@ -14,70 +14,85 @@
 
 <body>
     <div class="page-wrapper">
-        <div class="frame">
-            <div class="outer-wrapper">
+
+        <div class="outer-wrapper">
+            <div class="inner-wrapper">
                 <div id="container"></div>
-                <div class="pallete-wrapper">
-                    <div class="pallete" id="orangered"></div>
-                    <div class="pallete" id="orange"></div>
-                    <div class="pallete" id="yellow"></div>
-                    <div class="pallete" id="yellowgreen"></div>
-                    <div class="pallete" id="steelblue"></div>
-                    <div class="pallete" id="purple"></div>
-                    <div class="pallete" id="hotpink"></div>
-                    <div class="pallete" id="sienna"></div>
-                    <div class="pallete" id="white"></div>
-                    <div class="pallete" id="black"></div>
+                <div class="controls-wrapper">
+                    <button class="controls" id="left">left</button>
+                    <button class="controls" id="right">right</button>
                 </div>
-
-                <form class="settings">
-                    <div class="form-row">
-                        <section id="size">
-                            <label for="gridsize">Choose new grid size:</label>
-                            <input type="range" id="gridsize" name="gridsize" min="10" max="100" step="10"
-                                value="10" list="tickmarks">
-                            <datalist id="tickmarks">
-                                <option value="10" label="10"></option>
-                                <option value="20"></option>
-                                <option value="30"></option>
-                                <option value="40"></option>
-                                <option value="50" label="50"></option>
-                                <option value="60"></option>
-                                <option value="70"></option>
-                                <option value="80"></option>
-                                <option value="90"></option>
-                                <option value="100" label="100"></option>
-                            </datalist>
-
-                            <button id="creategrid" type="button">CREATE!</button>
-                        </section>
-                    </div>
-                    <div class="form-row">
-                        <section id="paint-method">
-                            <fieldset>
-                                <legend>Paint Method</legend>
-                                <label for="mouseenter"><input type="radio" name="method" id="mouseenter"
-                                        value="mouseenter" checked>Hover</label>
-                                <label for="click"><input type="radio" name="method" id="click"
-                                        value="click">Click</label>
-                            </fieldset>
-                        </section>
-                        <section id="opacity">
-                            <fieldset>
-                                <legend>Transparency</legend>
-                                <label for="solid"><input type="radio" name="opacity" id="1" value="1"
-                                        checked>Solid</label>
-                                <label for="transparent"><input type="radio" name="opacity" id="0.1"
-                                        value="0.1">Transparent</label>
-                            </fieldset>
-                        </section>
-                        <section id="linetoggle">
-                            <button id="toggle" type="button">Toggle grid lines</button>
-                        </section>
-                    </div>
-                </form>
             </div>
+
+            <div class="pallete-wrapper menu">
+                <div class="pallete" id="ff3f34"></div>
+                <!--red-->
+                <div class="pallete" id="ffa801"></div>
+                <!--orange-->
+                <div class="pallete" id="ffdd59"></div>
+                <!--yellow-->
+                <div class="pallete" id="05c46b"></div>
+                <!--green-->
+                <div class="pallete" id="4bcffa"></div>
+                <!--lightblue-->
+                <div class="pallete" id="3c40c6"></div>
+                <!--blue-->
+                <div class="pallete" id="7c3cc6"></div>
+                <!--purple-->
+                <div class="pallete" id="ef5777"></div>
+                <!--pink-->
+                <div class="pallete" id="c67700"></div>
+                <!--brown-->
+                <div class="pallete" id="fbfcfd"></div>
+                <!--white-->
+                <div class="pallete" id="1e272e"></div>
+                <!--black-->
+                <div class="pallete" id="rainbow"></div>
+            </div>
+
+            <form class="settings menu">
+                <div class="form-row" id="size">
+                    <label for="gridsize">Choose new grid size:</label>
+                    <div class="slider-wrapper">
+                        <input type="range" id="gridsize" name="gridsize" min="12" max="96" step="12" value="12"
+                            list="tickmarks">
+                    </div>
+                    <datalist id="tickmarks">
+                        <option value="12" label="12"></option>
+                        <option value="24"></option>
+                        <option value="36"></option>
+                        <option value="48"></option>
+                        <option value="60"></option>
+                        <option value="72"></option>
+                        <option value="84"></option>
+                        <option value="96" label="96"></option>
+                    </datalist>
+                    <button id="creategrid" type="button">CREATE!</button>
+                </div>
+                <div class="form-row">
+                    <section id="paint-method">
+                        <fieldset>
+                            <legend>Paint Method</legend>
+                            <label for="mouseenter"><input type="radio" name="method" id="mouseenter" value="mouseenter"
+                                    checked>Hover</label>
+                            <label for="click"><input type="radio" name="method" id="click" value="click">Click</label>
+                        </fieldset>
+                    </section>
+                    <section id="opacity">
+                        <fieldset>
+                            <legend>Transparency</legend>
+                            <label for="solid"><input type="radio" name="opacity" id="1" value="1" checked>Solid</label>
+                            <label for="transparent"><input type="radio" name="opacity" id="0.1"
+                                    value="0.1">Transparent</label>
+                        </fieldset>
+                    </section>
+                    <section id="linetoggle">
+                        <button id="toggle" type="button">Toggle grid lines</button>
+                    </section>
+                </div>
+            </form>
         </div>
+
         <button id="clear">CLEAR!</button>
     </div>
     <script src="script.js"></script>

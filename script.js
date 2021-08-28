@@ -1,11 +1,12 @@
 const container = document.getElementById("container");
-let size = 10;
+let size = 12;
 const cells = document.getElementsByClassName("cell"); //live collection
 let paintMethod = "mouseenter";
 let opacity = 1;
+let randomColors = [];
 
 const toggleButton = document.getElementById("toggle");
- 
+
 
 
 
@@ -16,12 +17,11 @@ function createGrid(size) {
         cell.classList.add("cell", "bordered");
         container.appendChild(cell);
         container.setAttribute("style", `grid-template-columns: repeat(${size}, 1fr);`);
-        toggleButton.addEventListener("click", function (e) {
+        toggleButton.addEventListener("click", function () {
             cell.classList.toggle("bordered");
-         });
+        });
     }
     addListener();
-    console.log("new grid created")
 }
 
 
@@ -43,12 +43,20 @@ const transparency = document.getElementsByName("opacity");
 for (let i = 0; i < transparency.length; i++) {
     transparency[i].addEventListener("click", function (e) {
         opacity = +e.currentTarget.id;
-        console.log("Opacity is set to " + opacity)
     });
 };
 
 function colorCell(e) {
-    e.currentTarget.style.backgroundColor = `${color}`;
+
+    //   e.currentTarget.style.backgroundColor = `rgb(${randomColors})`;
+    if (color == "rainbow") {
+        randomColors.splice(0, 3);
+        generateColor();
+        e.currentTarget.style.backgroundColor = `rgb(${randomColors})`;
+    }
+    else {
+        e.currentTarget.style.backgroundColor = `#${color}`;
+    }
 
     if (opacity <= 0.9 && e.currentTarget.style.opacity <= 0.9) { //without the first condition, opacity of 1 becomes 0.1
         opacity = e.currentTarget.style.opacity; // without this line, the counter never resets for individual cells
@@ -57,8 +65,6 @@ function colorCell(e) {
     else {
         e.currentTarget.style.opacity = 1;
     }
-
-    console.log(e.currentTarget.style.opacity)
 }
 
 function clearAll() {
@@ -73,18 +79,23 @@ function clearAll() {
 const clear = document.getElementById("clear");
 clear.addEventListener("click", eraser);
 
-function eraser(_e) {
+function eraser() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeAttribute("style"); // removes color and opacity settings from previous paint job
     }
 }
 
+function generateColor() {
+    for (let i = 0; randomColors.length < 3; i++) {
+        randomColors.push(Math.floor(Math.random() * 256));
+    }
+}
 
 
 
 // color buttons
 const colorButtons = document.getElementsByClassName("pallete");
-let color = "orange" //default
+let color = "ffdd59" //default
 for (let i = 0; i < colorButtons.length; i++) {
     colorButtons[i].addEventListener('click', function (e) {
         colorButtons[i].classList.remove("active"); //doesnt work
@@ -100,15 +111,9 @@ for (let i = 0; i < methods.length; i++) {
     methods[i].addEventListener("click", function (e) {
         removeListener(); //remove old listener before asigning new value
         paintMethod = e.currentTarget.id;
-        console.log("Paint method is set to " + paintMethod);
         addListener()
     });
 };
-
-
-
-
-
 
 // create new grid
 const inputSize = document.getElementById("gridsize");
@@ -116,11 +121,10 @@ inputSize.addEventListener("change", updateValue);
 
 function updateValue(e) {
     size = e.target.value;
-    console.log(size)
 }
 
 const createButton = document.getElementById("creategrid");
-createButton.addEventListener("click", function (e) {
+createButton.addEventListener("click", function () {
     let confirmCreate = confirm(`You are about to clear all your work and create a new ${size}x${size} grid. Are you sure?`);
     if (confirmCreate == true) {
         createGrid(size);
@@ -130,10 +134,6 @@ createButton.addEventListener("click", function (e) {
     }
 });
 
-
-
-
-
-createGrid(10);
+createGrid(24);
 
 
