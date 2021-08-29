@@ -4,9 +4,9 @@
     --dark: #485460;
     --accent: #ffa801;
     --lightgray: #f1f3f6;
-    --outerwidth: 250px;
+    --outerwidth: 275px;
     --containerwidth: 100%;
-    --containerheight: 250px;
+    --containerheight: 275px;
 }
 
 /* * {
@@ -20,6 +20,7 @@ html, body {
     height: 100%;
     overflow-x: hidden;
     background: #d2dae2;
+    color: #1e272e;
     /* background: linear-gradient(to top, var(--dark), #00e9e7); */
 }
 
@@ -61,6 +62,7 @@ body, input, button {
     height: var(--containerheight);
     display: grid;
     background-color: white;
+    border: 1px solid #ff3f34;
     
 }
 
@@ -76,17 +78,27 @@ body, input, button {
 
 .controls {
     background-color: var(--lightgray);
-    color: #222;
     margin: 10px;
     margin-top: 15px;
     width: 50px;
     height: 50px;
+    border: 3px solid #d42b22;
     border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset -3px -2px 0px 1px rgba(0,0,0,0.1),1px 3px 5px 1px rgba(0,0,0,0.1);
 }
 
-/* .controls#right {
-    float: right;
-} */
+.controls:hover {
+    transform: scale(1.2);
+    background-color: var(--lightgray);
+}
+
+.material-icons-outlined {
+    color: #485460;
+    position: relative;
+    bottom: 1px;
+}
 
 /* MAIN MENU DIVS */
 
@@ -95,14 +107,17 @@ body, input, button {
     margin-top: 12px;
     padding: 5px;
     background-color: rgba(241, 243, 246, 0.85);
-    border: 1px solid #485460;
+    border: 1px dotted #485460;
     border-radius: 5px;
-    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
+    box-shadow: 2px 1px 3px rgba(30, 39, 46,0.5);
+    visibility: hidden;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
 }
 
-.pallete-wrapper {
+#pallete-wrapper {
     height: 50px;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -122,8 +137,7 @@ body, input, button {
     padding-top: 100%;
 }
 
-.settings {
-    display: flex;
+#settings {
     flex-direction: row;
     flex-wrap: wrap;
 
@@ -213,7 +227,6 @@ fieldset {
 /* BUTTONS */
 
 button {
-    font-size: 1.1em;
     width: 75px;
     padding: 7px;
     background-color: var(--dark);
@@ -230,7 +243,7 @@ button:hover, button#clear:hover {
 }
 
 button#clear {
-    margin: 20px auto;
+    margin: 15px auto;
     width: 150px;
     padding: 10px;
     background-color: #fff;
@@ -295,7 +308,7 @@ button#clear {
         width: 120px;
     }
 
-    .pallete-wrapper {
+    #pallete-wrapper {
         flex-direction: column;
         order: -1;
         height: 100%;
@@ -306,7 +319,7 @@ button#clear {
         width: 42px;
     }
 
-    .settings {
+    #settings {
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;

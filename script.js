@@ -134,6 +134,34 @@ createButton.addEventListener("click", function () {
     }
 });
 
+
+
+
+const palleteButton = document.getElementById("btn-pallete");
+const palleteMenu = document.getElementById("pallete-wrapper");
+const settingsButton = document.getElementById("btn-settings");
+const settingsMenu = document.getElementById("settings");
+
+
+let item;
+function toggleMenu(item) {
+    if (item.style.visibility == "visible") {
+        item.style.visibility = "hidden";
+    } else {
+        item.style.visibility = "visible";
+    }
+}
+
+palleteButton.addEventListener("click", function () {
+    toggleMenu(palleteMenu);
+});
+
+settingsButton.addEventListener("click", function () {
+    toggleMenu(settingsMenu);
+});
+
+
+
 createGrid(24);
 
 
