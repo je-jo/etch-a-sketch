@@ -1,9 +1,12 @@
 @import url(minireset.css);
 
 :root {
-    --blue: #00a5a4;
+    --dark: #485460;
     --accent: #ffa801;
     --lightgray: #f1f3f6;
+    --outerwidth: 250px;
+    --containerwidth: 100%;
+    --containerheight: 250px;
 }
 
 /* * {
@@ -13,11 +16,11 @@
 /* MAIN ELEMENTS */
 
 html, body {
-    width: 100%;
+    width: 100vw;
     height: 100%;
-    overflow-y: scroll;
-    background: #00a5a4;
-    background: linear-gradient(to top, var(--blue), #00e9e7);
+    overflow-x: hidden;
+    background: #d2dae2;
+    /* background: linear-gradient(to top, var(--dark), #00e9e7); */
 }
 
 body, input, button {
@@ -31,50 +34,31 @@ body, input, button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding-top: 15px;
 }
 
-/* .frame {
-    background-color: #ff5e57;
-    padding: 5px;
-    border-radius: 3px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
-
-} */
-
 .outer-wrapper {
-    width: 250px;
+    width: var(--outerwidth);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .inner-wrapper {
-    /* width: 100%;
-    max-width: 960px;
-    height: 100%; */
-    /* min-width: calc(100% + 30px); */
-    max-width: 60vw;
+    width: calc(var(--containerwidth) + 30px);
     padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin: 10px; */
     background-color: #ff5e57;
     border-radius: 15px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
-    /* width: calc(100% + 30px); */
-    /* border: 15px solid #ff5e57;
-    border-bottom-width: 75px;
-    border-radius: 15px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514); */
+    border: 1px solid #ff3f34;
+    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
 }
 
 #container {
-    /* box-sizing: content-box; */
-    flex-shrink: 0;
-    width: 100%;
-    height: 250px;
+    width: var(--containerwidth);
+    height: var(--containerheight);
     display: grid;
     background-color: white;
     
@@ -94,6 +78,7 @@ body, input, button {
     background-color: var(--lightgray);
     color: #222;
     margin: 10px;
+    margin-top: 15px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -110,9 +95,9 @@ body, input, button {
     margin-top: 12px;
     padding: 5px;
     background-color: rgba(241, 243, 246, 0.85);
-    border: 1px solid #007271;
+    border: 1px solid #485460;
     border-radius: 5px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
+    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
 }
 
 .pallete-wrapper {
@@ -230,11 +215,12 @@ fieldset {
 button {
     font-size: 1.1em;
     width: 75px;
-    padding: 10px;
-    background-color: var(--blue);
+    padding: 7px;
+    background-color: var(--dark);
     color: #fff;
-    border: none;
     border-radius: 3px;
+    border: 1px solid #485460;
+    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
 }
 
 button:hover, button#clear:hover {
@@ -244,10 +230,11 @@ button:hover, button#clear:hover {
 }
 
 button#clear {
-    margin: 50px auto;
+    margin: 20px auto;
     width: 150px;
+    padding: 10px;
     background-color: #fff;
-    color: var(--blue);
+    color: var(--dark);
     border-radius: 3px;
     box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
 }
@@ -255,30 +242,22 @@ button#clear {
 
 @media screen and (min-width: 375px) {
 
-
-    .outer-wrapper {
-        width: 350px;
-    }
-
-    #container {
-        height: 350px;
+    :root {
+        --outerwidth: 350px;
+        --containerheight: 350px;
     }
 
 }
 
 @media screen and (min-width: 500px) {
 
-
-    .outer-wrapper {
-        width: 450px;
-    }
-
-    #container {
-        height: 450px;
+    :root {
+        --outerwidth: 450px;
+        --containerheight: 450px;
     }
 
     .menu {
-        padding: 10px;
+        padding: 7px;
     }
 
     input[type="range"] {
@@ -289,24 +268,31 @@ button#clear {
 
 @media screen and (min-width: 768px) {
 
+    :root {
+        --outerwidth: 750px;
+        --containerwidth: 550px;
+        --containerheight: 550px;
+    }
+
+    .page-wrapper {
+        padding-top: 65px;
+    }
+
 
     .outer-wrapper {
-        width: 750px;
         height: 550px;
         flex-direction: row;
     }
 
     #container {
-        height: 550px;
-        width: 550px;
-        margin: 0 10px;
+        /* margin: 0 10px; */
     }
 
 
 
     .menu {
         margin: 0;
-        width: 100px;
+        width: 120px;
     }
 
     .pallete-wrapper {
@@ -335,53 +321,70 @@ button#clear {
 
 
     input[type="range"] {
-    height: 20px;
-  width: 150px;
-  margin: 0;
-  transform-origin: 75px 75px;
-  transform: rotate(-90deg);
-  text-align: left;
+       height: 20px;
+       width: 150px;
+       margin: 0;
+       transform-origin: 75px 75px;
+       transform: rotate(-90deg);
+       text-align: left;
   }
-
 
 
     .form-row {
         flex-direction: column;
         height: 50%;
+        justify-content: space-around;
+    }
+
+    button {
+        padding: 10px;
+    }
+
+    button#clear {
+        margin: 70px auto;
     }
 
 }
 
 @media screen and (min-width: 1000px) {
-    .outer-wrapper {
-        width: 100%;
+
+    :root {
+        --outerwidth: 90%;
     }
 
     body, input, button {
         font-size: 14px;
     }
 
-    .menu {
+    /* .menu {
         width: 150px;
-    }
+    } */
 
     .form-row {
-        padding: 15px;
+        padding: 10px;
+        align-items: flex-start;
     }
+
+    .slider-wrapper {
+       align-self: center;
+      }
 }
 
 
 @media screen and (min-width: 1200px) {
 
+    :root {
+        --containerwidth: 750px;
+        --containerheight: 750px;
+    }
+
     .outer-wrapper {
-       
+        max-width: 1100px;
         height: 750px;
     }
 
     #container {
-        height: 750px;
-        width: 750px;
-        margin: 0 100px;
+        /* margin: 0 100px; */
     }
 
     .pallete {
