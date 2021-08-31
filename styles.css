@@ -21,7 +21,10 @@ html, body {
     overflow-x: hidden;
     background: #d2dae2;
     color: #1e272e;
-    /* background: linear-gradient(to top, var(--dark), #00e9e7); */
+    background: 
+    conic-gradient(from 31deg at 40% 35%, 
+    #7f96ad 95deg, #485460 0% 55%, 
+    #d2dae2 0% calc(180deg + 95deg), #fff 0%);
 }
 
 body, input, button {
@@ -38,7 +41,7 @@ body, input, button {
     padding-top: 15px;
 }
 
-.outer-wrapper {
+#outer-wrapper {
     width: var(--outerwidth);
     display: flex;
     flex-direction: column;
@@ -107,17 +110,17 @@ body, input, button {
     margin-top: 12px;
     padding: 5px;
     background-color: rgba(241, 243, 246, 0.85);
-    border: 1px dotted #485460;
+    border: 1px solid var(--dark);
     border-radius: 5px;
     box-shadow: 2px 1px 3px rgba(30, 39, 46,0.5);
-    visibility: hidden;
-    display: flex;
+    display: none;
+    visibility: visible;
+    max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease-out;
 }
 
 #pallete-wrapper {
-    height: 50px;
     align-items: center;
     justify-content: center;
 }
@@ -144,7 +147,7 @@ body, input, button {
 }
 
 .form-row {
-    height: 50px;
+    /* height: 50px; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -292,7 +295,7 @@ button#clear {
     }
 
 
-    .outer-wrapper {
+    #outer-wrapper {
         height: 550px;
         flex-direction: row;
     }
@@ -306,6 +309,8 @@ button#clear {
     .menu {
         margin: 0;
         width: 120px;
+        display: flex;
+        visibility: hidden;
     }
 
     #pallete-wrapper {
@@ -391,7 +396,7 @@ button#clear {
         --containerheight: 750px;
     }
 
-    .outer-wrapper {
+    #outer-wrapper {
         max-width: 1100px;
         height: 750px;
     }

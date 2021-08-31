@@ -136,23 +136,38 @@ createButton.addEventListener("click", function () {
 
 
 
-
+// const wrapper = document.getElementById("outer-wrapper");
 const palleteButton = document.getElementById("btn-pallete");
 const palleteMenu = document.getElementById("pallete-wrapper");
 const settingsButton = document.getElementById("btn-settings");
 const settingsMenu = document.getElementById("settings");
 
-
-let item;
 function toggleMenu(item) {
-    if (item.style.visibility == "visible") {
-        item.style.visibility = "hidden";
-    } else {
-        item.style.visibility = "visible";
+    let mainFlexDirection = window.getComputedStyle(document.getElementById("outer-wrapper")).flexDirection;
+    if (mainFlexDirection == "column") {
+        if (item.style.maxHeight) {
+            item.style.maxHeight = null;
+            item.style.display = "none"
+        } else {
+            item.style.display = "flex"
+            item.style.maxHeight = (item.scrollHeight + ((item.scrollWidth / 5) * 2)) + "px";
+            item.style.visibility = "visible";
+        }
+    }
+    else if (mainFlexDirection == "row") {
+        if (item.style.visibility == "visible") {
+            item.style.display = "flex"
+            item.style.visibility = "hidden";
+        } else {
+            item.style.display = "flex"
+            item.style.visibility = "visible";
+            item.style.maxHeight = "100%";
+        }
     }
 }
 
-palleteButton.addEventListener("click", function () {
+
+palleteButton.addEventListener("click", function () {   // the roundabout way to use named function with parameters inside event listener 
     toggleMenu(palleteMenu);
 });
 
