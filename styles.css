@@ -7,6 +7,9 @@
     --outerwidth: 275px;
     --containerwidth: 100%;
     --containerheight: 275px;
+    --bgcolor1: #7f96ad;
+    --bgcolor2: #485460;
+    --bgcolor3: #d2dae2;
 }
 
 /* * {
@@ -22,9 +25,10 @@ html, body {
     background: #d2dae2;
     color: #1e272e;
     background: 
-    conic-gradient(from 31deg at 40% 35%, 
-    #7f96ad 95deg, #485460 0% 55%, 
-    #d2dae2 0% calc(180deg + 95deg), #fff 0%);
+    conic-gradient(from 31deg at 40% 25%, 
+    var(--bgcolor1) 89deg, var(--bgcolor2) 0% 50%, 
+    var(--bgcolor3) 0% calc(180deg + 89deg), var(--lightgray) 0%);
+    outline: 1px solid transparent; /*should prevent background bleeding on mobile */
 }
 
 body, input, button {
@@ -45,7 +49,7 @@ body, input, button {
     width: var(--outerwidth);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 .inner-wrapper {
@@ -114,7 +118,6 @@ body, input, button {
     border-radius: 5px;
     box-shadow: 2px 1px 3px rgba(30, 39, 46,0.5);
     display: none;
-    visibility: visible;
     max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease-out;
@@ -285,7 +288,7 @@ button#clear {
 @media screen and (min-width: 768px) {
 
     :root {
-        --outerwidth: 750px;
+        --outerwidth: 98%;
         --containerwidth: 550px;
         --containerheight: 550px;
     }
@@ -298,6 +301,7 @@ button#clear {
     #outer-wrapper {
         height: 550px;
         flex-direction: row;
+        position: relative;
     }
 
     #container {
@@ -308,15 +312,17 @@ button#clear {
 
     .menu {
         margin: 0;
-        width: 120px;
+        width: 11%;
         display: flex;
-        visibility: hidden;
+        position: absolute;
     }
 
     #pallete-wrapper {
         flex-direction: column;
         order: -1;
         height: 100%;
+        top: 0;
+        left: 0;
     }
 
     .pallete {
@@ -328,6 +334,8 @@ button#clear {
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
+        top: 0;
+        right: 0;
     }
 
     .slider-wrapper {
@@ -374,9 +382,9 @@ button#clear {
         font-size: 14px;
     }
 
-    /* .menu {
-        width: 150px;
-    } */
+    .menu {
+        width: 120px;
+    }
 
     .form-row {
         padding: 10px;

@@ -95,12 +95,12 @@ function generateColor() {
 
 // color buttons
 const colorButtons = document.getElementsByClassName("pallete");
-let color = "ffdd59" //default
+let color = "1e272e" //default black
 for (let i = 0; i < colorButtons.length; i++) {
     colorButtons[i].addEventListener('click', function (e) {
         colorButtons[i].classList.remove("active"); //doesnt work
         color = e.currentTarget.id;
-        e.currentTarget.classList.add("active");
+        // e.currentTarget.classList.add("active");
     });
 }
 
@@ -151,16 +151,14 @@ function toggleMenu(item) {
         } else {
             item.style.display = "flex"
             item.style.maxHeight = (item.scrollHeight + ((item.scrollWidth / 5) * 2)) + "px";
-            item.style.visibility = "visible";
         }
     }
     else if (mainFlexDirection == "row") {
-        if (item.style.visibility == "visible") {
-            item.style.display = "flex"
-            item.style.visibility = "hidden";
+        if (item.style.maxHeight) {
+            item.style.maxHeight = null;
+            item.style.display = "none"
         } else {
             item.style.display = "flex"
-            item.style.visibility = "visible";
             item.style.maxHeight = "100%";
         }
     }
