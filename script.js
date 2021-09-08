@@ -1,14 +1,11 @@
 const container = document.getElementById("container");
-let size = 12;
 const cells = document.getElementsByClassName("cell"); //live collection
+let size = 12;
 let paintMethod = "mouseenter";
 let opacity = 1;
+let color = "1e272e"; //default black
 let randomColors = [];
-
 const toggleButton = document.getElementById("toggle");
-
-
-
 
 function createGrid(size) {
     clearAll();
@@ -21,34 +18,38 @@ function createGrid(size) {
             cell.classList.toggle("bordered");
         });
     }
-    addListener();
+    updateListener();
 }
 
-
-
-function addListener() {
+function clearAll() {     //remove all created squares
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+function updateListener() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].addEventListener(`${paintMethod}`, colorCell);
     }
 }
-
 function removeListener() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener(`${paintMethod}`, colorCell);
     }
 }
 
-// transparency
-const transparency = document.getElementsByName("opacity");
-for (let i = 0; i < transparency.length; i++) {
-    transparency[i].addEventListener("click", function (e) {
-        opacity = +e.currentTarget.id;
+// hover or click
+const methods = document.getElementsByName("method");
+for (let i = 0; i < methods.length; i++) {
+    methods[i].addEventListener("click", function (e) {
+        removeListener(); //remove old listener before asigning new one
+        paintMethod = e.currentTarget.id;
+        updateListener()
     });
 };
 
-function colorCell(e) {
 
-    //   e.currentTarget.style.backgroundColor = `rgb(${randomColors})`;
+
+function colorCell(e) {
     if (color == "rainbow") {
         randomColors.splice(0, 3);
         generateColor();
@@ -67,12 +68,18 @@ function colorCell(e) {
     }
 }
 
-function clearAll() {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
+function generateColor() {
+    for (let i = 0; randomColors.length < 3; i++) {
+        randomColors.push(Math.floor(Math.random() * 256));
     }
 }
-
+// transparency
+const transparency = document.getElementsByName("opacity");
+for (let i = 0; i < transparency.length; i++) {
+    transparency[i].addEventListener("click", function (e) {
+        opacity = +e.currentTarget.id;
+    });
+};
 
 
 // clear canvas
@@ -85,35 +92,26 @@ function eraser() {
     }
 }
 
-function generateColor() {
-    for (let i = 0; randomColors.length < 3; i++) {
-        randomColors.push(Math.floor(Math.random() * 256));
-    }
-}
-
-
-
 // color buttons
 const colorButtons = document.getElementsByClassName("pallete");
-let color = "1e272e" //default black
-for (let i = 0; i < colorButtons.length; i++) {
+const active = document.getElementsByClassName("active");
+
+for (let i = colorButtons.length - 1; i >= 0; i--) {
+    colorButtons[i].addEventListener('click', removeActive);
     colorButtons[i].addEventListener('click', function (e) {
-        colorButtons[i].classList.remove("active"); //doesnt work
         color = e.currentTarget.id;
-        // e.currentTarget.classList.add("active");
+        e.currentTarget.classList.add("active");
     });
 }
 
-
-// hover or click
-const methods = document.getElementsByName("method");
-for (let i = 0; i < methods.length; i++) {
-    methods[i].addEventListener("click", function (e) {
-        removeListener(); //remove old listener before asigning new value
-        paintMethod = e.currentTarget.id;
-        addListener()
-    });
+function removeActive() {
+    for (let i = active.length - 1; i >= 0; i--) {
+        active[i].classList.remove('active');
+    }
 };
+
+
+
 
 // create new grid
 const inputSize = document.getElementById("gridsize");
@@ -134,36 +132,18 @@ createButton.addEventListener("click", function () {
     }
 });
 
-
-
-// const wrapper = document.getElementById("outer-wrapper");
+// hidable menus
 const palleteButton = document.getElementById("btn-pallete");
 const palleteMenu = document.getElementById("pallete-wrapper");
 const settingsButton = document.getElementById("btn-settings");
 const settingsMenu = document.getElementById("settings");
-
 function toggleMenu(item) {
-    let mainFlexDirection = window.getComputedStyle(document.getElementById("outer-wrapper")).flexDirection;
-    if (mainFlexDirection == "column") {
-        if (item.style.maxHeight) {
-            item.style.maxHeight = null;
-            item.style.display = "none"
-        } else {
-            item.style.display = "flex"
-            item.style.maxHeight = (item.scrollHeight + ((item.scrollWidth / 5) * 2)) + "px";
-        }
-    }
-    else if (mainFlexDirection == "row") {
-        if (item.style.maxHeight) {
-            item.style.maxHeight = null;
-            item.style.display = "none"
-        } else {
-            item.style.display = "flex"
-            item.style.maxHeight = "100%";
-        }
+    if (item.style.display == "flex") {
+        item.style.display = "none";
+    } else {
+        item.style.display = "flex";
     }
 }
-
 
 palleteButton.addEventListener("click", function () {   // the roundabout way to use named function with parameters inside event listener 
     toggleMenu(palleteMenu);

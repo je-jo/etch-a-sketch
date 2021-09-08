@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet">
-    <title>ETCH-A-SKETCH</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>ETCHY-SKETCHY-PAD</title>
 </head>
 
 <body>
@@ -22,40 +22,29 @@
                 <div id="container"></div>
                 <div class="controls-wrapper">
                     <button class="controls" id="btn-pallete"><span class="material-icons-outlined">
-                        palette
+                            palette
                         </span></button>
                     <button class="controls" id="btn-settings"><span class="material-icons-outlined">
-                        tune
+                            tune
                         </span>
-                        
-                        </button>
+
+                    </button>
                 </div>
             </div>
 
             <div id="pallete-wrapper" class="menu">
-                <div class="pallete active" id="ff3f34"></div>
-                <!--red-->
-                <div class="pallete active" id="ffa801"></div>
-                <!--orange-->
-                <div class="pallete" id="ffdd59"></div>
-                <!--yellow-->
-                <div class="pallete" id="05c46b"></div>
-                <!--green-->
-                <div class="pallete" id="4bcffa"></div>
-                <!--lightblue-->
-                <div class="pallete" id="3c40c6"></div>
-                <!--blue-->
-                <div class="pallete" id="7c3cc6"></div>
-                <!--purple-->
-                <div class="pallete" id="ef5777"></div>
-                <!--pink-->
-                <div class="pallete" id="c67700"></div>
-                <!--brown-->
-                <div class="pallete" id="fbfcfd"></div>
-                <!--white-->
-                <div class="pallete" id="1e272e"></div>
-                <!--black-->
-                <div class="pallete" id="rainbow"></div>
+                <div class="pallete" id="ff3f34" title="red" role="button"></div>
+                <div class="pallete" id="ffa801" title="orange" role="button"></div>
+                <div class="pallete" id="ffdd59" title="yellow" role="button"></div>
+                <div class="pallete" id="05c46b" title="green" role="button"></div>
+                <div class="pallete" id="4bcffa" title="lightblue" role="button"></div>
+                <div class="pallete" id="3c40c6" title="blue" role="button"></div>
+                <div class="pallete" id="7c3cc6" title="purple" role="button"></div>
+                <div class="pallete" id="ef5777" title="pink" role="button"></div>
+                <div class="pallete" id="c67700" title="brown" role="button"></div>
+                <div class="pallete" id="fbfcfd" title="white" role="button"></div>
+                <div class="pallete" id="1e272e" title="black" role="button"></div>
+                <div class="pallete" id="rainbow" title="rainbow" role="button"></div>
             </div>
 
             <form id="settings" class="menu">
@@ -102,7 +91,15 @@
         </div>
 
         <button id="clear">CLEAR!</button>
+
     </div>
+    <footer>
+        <p>&ldquo;Something between a sketchpad and an Etch-A-Sketch&rdquo; - <a
+                href="https://www.theodinproject.com/">The Odin Project.</a></p>
+        <p>Coded and designed by <a href="https://github.com/je-jo">Jelena Jovicic</a>, 2021.</p>
+    </footer>
+
+
     <script src="script.js"></script>
 </body>
 

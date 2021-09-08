@@ -4,31 +4,20 @@
     --dark: #485460;
     --accent: #ffa801;
     --lightgray: #f1f3f6;
-    --outerwidth: 275px;
-    --containerwidth: 100%;
-    --containerheight: 275px;
     --bgcolor1: #7f96ad;
-    --bgcolor2: #485460;
-    --bgcolor3: #d2dae2;
+    --bgcolor2: #d2dae2;
+    --outerwidth: 275px;
+    --containerwidth: 275px;
 }
-
-/* * {
-    outline: 1px solid red;
-} */
 
 /* MAIN ELEMENTS */
 
 html, body {
-    width: 100vw;
-    height: 100%;
-    overflow-x: hidden;
-    background: #d2dae2;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
     color: #1e272e;
-    background: 
-    conic-gradient(from 31deg at 40% 25%, 
-    var(--bgcolor1) 89deg, var(--bgcolor2) 0% 50%, 
-    var(--bgcolor3) 0% calc(180deg + 89deg), var(--lightgray) 0%);
-    outline: 1px solid transparent; /*should prevent background bleeding on mobile */
+    background-color: var(--dark);
 }
 
 body, input, button {
@@ -43,6 +32,12 @@ body, input, button {
     flex-direction: column;
     align-items: center;
     padding-top: 15px;
+    padding-bottom: 40px;
+    background-color: var(--dark);
+    background: 
+    conic-gradient(from 58deg at 10% 15%, 
+    var(--bgcolor1) 18deg, var(--dark) 0% 50%, 
+    var(--bgcolor2) 0% calc(180deg + 18deg), var(--lightgray) 0%);
 }
 
 #outer-wrapper {
@@ -66,7 +61,7 @@ body, input, button {
 
 #container {
     width: var(--containerwidth);
-    height: var(--containerheight);
+    height: var(--containerwidth);
     display: grid;
     background-color: white;
     border: 1px solid #ff3f34;
@@ -97,14 +92,42 @@ body, input, button {
 }
 
 .controls:hover {
-    transform: scale(1.2);
     background-color: var(--lightgray);
+    transform: scale(0.95);
+    box-shadow: inset 0px 0px 0px 5px rgba(0,0,0,0.1),0px 0px 3px 1px rgba(255,255,255,1);
 }
 
 .material-icons-outlined {
     color: #485460;
     position: relative;
     bottom: 1px;
+}
+
+/* BUTTONS */
+
+button {
+    padding: 7px;
+    background-color: var(--dark);
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid #485460;
+    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
+}
+
+button:hover, button#clear:hover {
+    background-color: var(--accent);
+    color: #fff;
+    font-weight: bolder;
+}
+
+button#clear {
+    margin: 20px auto;
+    width: 150px;
+    padding: 10px;
+    background-color: #fff;
+    color: var(--dark);
+    border-radius: 3px;
+    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
 }
 
 /* MAIN MENU DIVS */
@@ -118,7 +141,7 @@ body, input, button {
     border-radius: 5px;
     box-shadow: 2px 1px 3px rgba(30, 39, 46,0.5);
     display: none;
-    max-height: 0;
+    height: auto;
     overflow: hidden;
     transition: all 0.3s ease-out;
 }
@@ -135,6 +158,8 @@ body, input, button {
     border-radius: 50%;
     box-shadow: 2px 1px 3px rgba(1, 35, 73, 0.314);
     margin: 1px;
+    transition: all 0.1s ease;
+    cursor: pointer;
 }
 
 .pallete::before {
@@ -150,7 +175,6 @@ body, input, button {
 }
 
 .form-row {
-    /* height: 50px; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -206,12 +230,13 @@ body, input, button {
 
 #rainbow {
     background: #c0392b;
-    background: linear-gradient(135deg, #ff3f34 30%, #ffa801 30.1%, #ffdd59 60%, #05c46b 60.1%, #4bcffa 100%);
+    background: linear-gradient(135deg, #ff3f34, #ff3f34 25%, #ffa801 25%, #ffa801 40%, #ffdd59 40%, #ffdd59 58%, #05c46b 58%, #05c46b 75%, #4bcffa 75%, #4bcffa 100%);
 
 }
 
 .active {
-    border: 3px solid yellow;
+    transform: scale(1.05);
+    box-shadow: inset 0px 0px 0px 0.5em rgba(255,255,255,0.2);
 }
 
 /* INDIVIDUAL SETTINGS */
@@ -221,8 +246,6 @@ input[type="range"] {
     width: 80%;
 }
 
-
-
 fieldset {
     border: none;
     display: flex;
@@ -230,40 +253,39 @@ fieldset {
     padding: 0;
 }
 
-/* BUTTONS */
+legend {
+    margin-bottom: 6px;
+}
 
-button {
-    width: 75px;
-    padding: 7px;
+/* FOOTER */
+
+footer {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
     background-color: var(--dark);
-    color: #fff;
-    border-radius: 3px;
-    border: 1px solid #485460;
-    box-shadow: 3px 2px 6px rgba(30, 39, 46,0.5);
 }
 
-button:hover, button#clear:hover {
-    background-color: var(--accent);
+footer a {
+    text-decoration: none;
     color: #fff;
-    font-weight: bolder;
 }
 
-button#clear {
-    margin: 15px auto;
-    width: 150px;
-    padding: 10px;
-    background-color: #fff;
-    color: var(--dark);
-    border-radius: 3px;
-    box-shadow: 3px 2px 6px rgba(1, 35, 73, 0.514);
+footer a:hover {
+    color: var(--accent);
 }
+
+
 
 
 @media screen and (min-width: 375px) {
 
     :root {
-        --outerwidth: 350px;
-        --containerheight: 350px;
+        --outerwidth: 330px;
+        --containerwidth: 330px;
     }
 
 }
@@ -272,7 +294,7 @@ button#clear {
 
     :root {
         --outerwidth: 450px;
-        --containerheight: 450px;
+        --containerwidth: 450px;
     }
 
     .menu {
@@ -290,50 +312,40 @@ button#clear {
     :root {
         --outerwidth: 98%;
         --containerwidth: 550px;
-        --containerheight: 550px;
     }
 
     .page-wrapper {
-        padding-top: 65px;
+        padding-top: 25px;
     }
 
-
     #outer-wrapper {
-        height: 550px;
+        height: calc(var(--containerheight) + 105px); /* 105px is controls wrapper + padding */
         flex-direction: row;
         position: relative;
     }
 
-    #container {
-        /* margin: 0 10px; */
-    }
-
-
-
     .menu {
         margin: 0;
         width: 11%;
-        display: flex;
         position: absolute;
+        height: 100%;
     }
 
     #pallete-wrapper {
         flex-direction: column;
         order: -1;
-        height: 100%;
         top: 0;
         left: 0;
     }
 
     .pallete {
         height: 100%;
-        width: 42px;
+        width: 52px;
     }
 
     #settings {
         flex-direction: column;
         flex-wrap: nowrap;
-        height: 100%;
         top: 0;
         right: 0;
     }
@@ -355,7 +367,6 @@ button#clear {
        text-align: left;
   }
 
-
     .form-row {
         flex-direction: column;
         height: 50%;
@@ -365,11 +376,6 @@ button#clear {
     button {
         padding: 10px;
     }
-
-    button#clear {
-        margin: 70px auto;
-    }
-
 }
 
 @media screen and (min-width: 1000px) {
@@ -387,37 +393,30 @@ button#clear {
     }
 
     .form-row {
-        padding: 10px;
+        padding: 5px;
         align-items: flex-start;
     }
 
-    .slider-wrapper {
+    button, .slider-wrapper {
        align-self: center;
       }
 }
 
-
 @media screen and (min-width: 1200px) {
 
     :root {
-        --containerwidth: 750px;
-        --containerheight: 750px;
+        --containerwidth: 650px;
     }
 
     #outer-wrapper {
         max-width: 1100px;
-        height: 750px;
-    }
-
-    #container {
-        /* margin: 0 100px; */
     }
 
     .pallete {
-        width: 58px;
+        width: 60px;
     }
 
     input[type="range"] {
         width: 175px;
     }
-}
+} 
