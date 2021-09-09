@@ -31,7 +31,7 @@ The basic design is meant to resemble the classic etch-a-sketch toy.
 
 ### Screenshot
 
-![](images/etch.png)
+![](images/etchy.png)
 
 ### Links
 
