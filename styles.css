@@ -31,8 +31,7 @@ body, input, button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 50px;
+    padding: 1vh 0 50px;
     background-color: var(--dark);
     background: 
     conic-gradient(from 58deg at 10% 15%, 
@@ -121,7 +120,7 @@ button:hover, button#clear:hover {
 }
 
 button#clear {
-    margin: 20px auto;
+    margin: 3vh auto 1vh;
     width: 150px;
     padding: 10px;
     background-color: #fff;
@@ -290,11 +289,18 @@ footer a:hover {
 
 }
 
+@media screen and (min-width: 425px) {
+
+    footer {
+        height: 40px;
+    }
+}
+
 @media screen and (min-width: 500px) {
 
     :root {
-        --outerwidth: 450px;
-        --containerwidth: 450px;
+        --outerwidth: 400px;
+        --containerwidth: 400px;
     }
 
     .menu {
@@ -311,15 +317,16 @@ footer a:hover {
 
     :root {
         --outerwidth: 98%;
-        --containerwidth: 550px;
+        --containerwidth: 70vh;
+
     }
 
     .page-wrapper {
-        padding-top: 25px;
+        padding-top: 3vh;
     }
 
     #outer-wrapper {
-        height: calc(var(--containerheight) + 105px); /* 105px is controls wrapper + padding */
+        height: calc(var(--containerwidth) + 105px); /* 105px is controls wrapper + padding */
         flex-direction: row;
         position: relative;
     }
@@ -340,7 +347,7 @@ footer a:hover {
 
     .pallete {
         height: 100%;
-        width: 52px;
+        width: calc((var(--containerwidth) + 105px) / 13);
     }
 
     #settings {
@@ -404,16 +411,9 @@ footer a:hover {
 
 @media screen and (min-width: 1200px) {
 
-    :root {
-        --containerwidth: 650px;
-    }
 
     #outer-wrapper {
         max-width: 1100px;
-    }
-
-    .pallete {
-        width: 60px;
     }
 
     input[type="range"] {
